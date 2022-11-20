@@ -104,7 +104,7 @@ public class AlunoDaoTest {
 		assertEquals(1, alunoDao.list().size());
 	}
 	
-	@Test
+	/*@Test
 	public void testListarEAdicionarAlunos(){
 		int qtd = alunoDao.list().size();
 		
@@ -125,7 +125,7 @@ public class AlunoDaoTest {
 		
 		alunoDao.save(new Aluno());
 		assertEquals(1, alunoDao.list().size());
-	}
+	}*/
 	
 	@Test
 	public void testSearchAluno() throws Exception{
