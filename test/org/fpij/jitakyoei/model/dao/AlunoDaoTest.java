@@ -11,7 +11,6 @@ import org.fpij.jitakyoei.model.beans.Entidade;
 import org.fpij.jitakyoei.model.beans.Filiado;
 import org.fpij.jitakyoei.model.beans.Professor;
 import org.fpij.jitakyoei.util.DatabaseManager;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -104,28 +103,39 @@ public class AlunoDaoTest {
 		assertEquals(1, alunoDao.list().size());
 	}
 	
-	/*@Test
+	@Test
 	public void testListarEAdicionarAlunos(){
+		clearDatabase();
+
 		int qtd = alunoDao.list().size();
-		
-		alunoDao.save(new Aluno());
+
+		alunoDao.save(aluno);
 		assertEquals(qtd+1, alunoDao.list().size());
 		
-		alunoDao.save(new Aluno());
+		Aluno aluno2 = new Aluno();
+		aluno2.setFiliado(f1);
+
+		alunoDao.save(aluno2);
 		assertEquals(qtd+2, alunoDao.list().size());
+
+		Aluno aluno3 = new Aluno();
+		aluno3.setFiliado(f1);
 		
-		alunoDao.save(new Aluno());
+		alunoDao.save(aluno3);
 		assertEquals(qtd+3, alunoDao.list().size());
 		
-		alunoDao.save(new Aluno());
+		Aluno aluno4 = new Aluno();
+		aluno4.setFiliado(f1);
+
+		alunoDao.save(aluno4);
 		assertEquals(qtd+4, alunoDao.list().size());
 		
 		clearDatabase();
 		assertEquals(0, alunoDao.list().size());
 		
-		alunoDao.save(new Aluno());
+		alunoDao.save(aluno);
 		assertEquals(1, alunoDao.list().size());
-	}*/
+	}
 	
 	@Test
 	public void testSearchAluno() throws Exception{
@@ -144,11 +154,4 @@ public class AlunoDaoTest {
 		clearDatabase();
 		assertEquals(0, alunoDao.search(a).size());
 	}
-	
-	@AfterClass
-	public static void closeDatabase(){
-		clearDatabase();
-		DatabaseManager.close();
-	}
-	
 }
