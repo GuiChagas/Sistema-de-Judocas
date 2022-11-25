@@ -10,4 +10,4 @@
   <p>IDE: IntelliJ</p>
   <p>CI: Maven</p>
   <p>Structure folder: baseado no Maven Archetype</p>
-  <p>Covarage plugin: Maven JaCoCo</p>
+  <p>Test Covarage View plugin: Maven JaCoCo</p>
