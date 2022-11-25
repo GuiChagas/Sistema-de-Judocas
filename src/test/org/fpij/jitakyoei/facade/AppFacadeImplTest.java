@@ -95,7 +95,6 @@ public class AppFacadeImplTest {
     @Test
     public void createEntidade() throws Exception {
 
-
         Entidade wantedEntity = appFacade.searchEntidade(entity).get(0);
 
         assertEquals(entity.getNome(), wantedEntity.getNome());
@@ -105,15 +104,13 @@ public class AppFacadeImplTest {
     @Test
     public void updateEntidade() throws Exception {
       
-        List<Entidade> retornoLista = appFacade.listEntidade();
-        Entidade alunoReceived = retornoLista.get(0);
+        Entidade wantedEntity =  appFacade.listEntidade().get(0);
 
-        alunoReceived.setNome("Entidade Update Teste");
-        appFacade.updateEntidade(alunoReceived);
+        wantedEntity.setNome("Entidade Update Teste");
+        appFacade.updateEntidade(wantedEntity);
 
-        List<Entidade> retornoLista2 = appFacade.listEntidade();
-        assertEquals("Entidade Update Teste", retornoLista2.get(0).getNome());
-        assertNotEquals("Entidade teste Update invalido", retornoLista2.get(0).getNome());
+        assertEquals("Entidade Update Teste", appFacade.listEntidade().get(0).getNome());
+        assertNotEquals("Entidade teste Update invalido", appFacade.listEntidade().get(0).getNome());
     }
 
     @Test
