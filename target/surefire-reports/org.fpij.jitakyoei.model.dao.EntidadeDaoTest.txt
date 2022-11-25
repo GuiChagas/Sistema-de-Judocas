@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.fpij.jitakyoei.model.dao.EntidadeDaoTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.332 s - in org.fpij.jitakyoei.model.dao.EntidadeDaoTest

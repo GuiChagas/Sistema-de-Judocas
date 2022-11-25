@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EntidadeValidator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SoftwareTestingProject</a> &gt; <a href="index.source.html" class="el_package">org.fpij.jitakyoei.model.validator</a> &gt; <span class="el_source">EntidadeValidator.java</span></div><h1>EntidadeValidator.java</h1><pre class="source lang-java linenums">package org.fpij.jitakyoei.model.validator;
+
+import org.fpij.jitakyoei.model.beans.Entidade;
+
+import java.util.List;
+
+
+<span class="fc" id="L8">public class EntidadeValidator {</span>
+<span class="fc" id="L9">    private EnderecoValidator addressValidator = new EnderecoValidator();</span>
+
+    public boolean validate(Entidade entity) {
+
+<span class="fc" id="L13">        System.out.println(entity.getCnpj().isEmpty());</span>
+<span class="fc" id="L14">        System.out.println(entity.getNome().isEmpty());</span>
+<span class="fc" id="L15">        System.out.println(entity.getTelefone1().isEmpty());</span>
+<span class="fc" id="L16">        System.out.println(entity.getTelefone2().isEmpty());</span>
+<span class="fc" id="L17">        System.out.println(addressValidator.validate(entity.getEndereco()));</span>
+
+<span class="pc bpc" id="L19" title="1 of 2 branches missed.">        if(entity.getCnpj().isEmpty() ||</span>
+<span class="pc bpc" id="L20" title="1 of 2 branches missed.">           entity.getNome().isEmpty() ||</span>
+<span class="pc bpc" id="L21" title="2 of 4 branches missed.">           (entity.getTelefone1().isEmpty() || entity.getTelefone2().isEmpty()) ||</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">           addressValidator.validate(entity.getEndereco()))</span>
+        {
+<span class="fc" id="L24">            return false;</span>
+        }
+<span class="fc" id="L26">        return true;</span>
+    }
+
+    public boolean validateList(List&lt;Entidade&gt; entity) {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for(Entidade e : entity){</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">            if(e.getCnpj().isEmpty() ||</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">               e.getNome().isEmpty() ||</span>
+<span class="pc bpc" id="L33" title="2 of 4 branches missed.">               (e.getTelefone1().isEmpty() || e.getTelefone2().isEmpty()) ||</span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">               addressValidator.validate(e.getEndereco()))</span>
+            {
+<span class="fc" id="L36">                return false;</span>
+            }
+<span class="fc" id="L38">        }</span>
+<span class="fc" id="L39">        return true;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
