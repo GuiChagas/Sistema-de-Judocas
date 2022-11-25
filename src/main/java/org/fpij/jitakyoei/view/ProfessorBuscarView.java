@@ -14,7 +14,8 @@ import org.fpij.jitakyoei.view.forms.CamposBuscaForm;
 
 import org.fpij.jitakyoei.model.beans.Professor;
 import org.fpij.jitakyoei.view.gui.ProfessorBuscarPanel;
-
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 public class ProfessorBuscarView implements ViewComponent {
 
 	private ProfessorBuscarPanel gui;
@@ -26,12 +27,15 @@ public class ProfessorBuscarView implements ViewComponent {
 	private Professor selectedProfessor;
 	public int MODO;
 
+
 	public static int ALTERACAO = 1;
 	public static int BUSCA = 2;
 
 	public ProfessorBuscarView(int MODO) {
 		this();
-		this.MODO = MODO;
+		if(MODO == ALTERACAO){
+			gui.getProfessores().addMouseListener(new TableProfessoresMouseClickedHandler());
+		}
 	}
 
 	public ProfessorBuscarView() {
@@ -112,6 +116,22 @@ public class ProfessorBuscarView implements ViewComponent {
 
 	public void setselectedProfessor(Professor selectedProfessor) {
 		this.selectedProfessor = selectedProfessor;
+	}
+
+	public class TableProfessoresMouseClickedHandler implements MouseListener {
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			selectedProfessor = professorList.get(gui.getProfessores().getSelectedRow());
+			gui.getParent().getParent().getParent().getParent().setVisible(false);
+		}
+		@Override
+		public void mouseEntered(MouseEvent arg0) {}
+		@Override
+		public void mouseExited(MouseEvent arg0) {}
+		@Override
+		public void mousePressed(MouseEvent arg0) {}
+		@Override
+		public void mouseReleased(MouseEvent arg0) {}
 	}
 
 }
